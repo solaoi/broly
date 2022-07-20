@@ -18,7 +18,6 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - windows-latest
           - macOS-latest
     steps:
       - uses: actions/checkout@v1
@@ -34,11 +33,7 @@ jobs:
           cp -r ${{ env.RELEASE_FILES }} "dist/$assets/"
           (
             cd dist
-            if [[ "${{ runner.os }}" == Windows ]]; then
-              7z a "$assets.zip" "$assets"
-            else
-              tar czf "$assets.tar.gz" "$assets"
-            fi
+            tar czf "$assets.tar.gz" "$assets"
             ls -lah *.*
           )
         shell: bash
@@ -47,7 +42,6 @@ jobs:
           name: artifact-${{ matrix.os }}
           path: |
             dist/*.tar.gz
-            dist/*.zip
 
   create-release:
     runs-on: ubuntu-latest
@@ -84,9 +78,6 @@ jobs:
           - os: ubuntu-latest
             asset_name_suffix: linux.tar.gz
             asset_content_type: application/gzip
-          - os: windows-latest
-            asset_name_suffix: windows.zip
-            asset_content_type: application/zip
           - os: macOS-latest
             asset_name_suffix: macos.tar.gz
             asset_content_type: application/gzip
