@@ -9,7 +9,7 @@ env:
   APP_NAME: 'bloly'
   NIM_VERSION: 'stable'
   MAINTAINER: 'solaoi'
-  RELEASE_FILES: APPNAME LICENSE README.*
+  RELEASE_FILES: broly LICENSE README.*
 
 jobs:
   build-artifact:
