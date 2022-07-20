@@ -1,0 +1,18 @@
+[
+    {
+        "path": "/hello",
+        "method": "GET",
+        "contentType": "application/json",
+        "statusCode": "200",
+        "response": "{\"name\": \"hello\"}",
+        "sleep": 0
+    },
+    {
+        "path": "/world",
+        "method": "GET",
+        "contentType": "application/json",
+        "statusCode": "200",
+        "response": "{\"name\": \"world\"}",
+        "sleep": 0
+    }
+]
