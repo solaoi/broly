@@ -12,7 +12,7 @@ env:
 
 jobs:
   build-artifact:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os.name }}
     strategy:
       matrix:
         os:
@@ -35,7 +35,7 @@ jobs:
         shell: bash
       - uses: actions/upload-artifact@v2
         with:
-          name: artifact-${{ matrix.os }}
+          name: artifact-${{ matrix.os.name }}
           path: |
             *.tar.gz
 
