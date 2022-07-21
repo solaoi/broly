@@ -42,10 +42,10 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            asset_name_suffix: linux.tar.gz
+            asset_name_suffix: linux_amd64.tar.gz
             asset_content_type: application/gzip
           - os: macOS-latest
-            asset_name_suffix: macos.tar.gz
+            asset_name_suffix: darwin_amd64.tar.gz
             asset_content_type: application/gzip
     steps:
       - uses: actions/download-artifact@v2
