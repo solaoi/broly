@@ -2,9 +2,30 @@
 
 This is a high performance stub server.
 
-## Benchmark
-
 ## Usage
+
+```sh
+broly target.json -p 9999
+```
+
+JSON format is below.   
+see a sample [here](https://raw.githubusercontent.com/solaoi/broly/main/target.json).
+
+| Field       | Type                    | Required | Default          | Sample                  |
+| ----------- | ----------------------- | -------- | ---------------- | ----------------------- |
+| - (parent)  | JSONArray or JSONObject | True     | -                | -                       |
+| path        | string                  | True     | -                | "/hello"                |
+| method      | string                  | True     | -                | "GET"                   |
+| contentType | string                  | False    | application/json | "application/json"      |
+| statusCode  | string                  | True     | -                | "200"                   |
+| response    | string                  | True     | -                | "{\"name\": \"hello\"}" |
+| sleep       | number                  | False    | 0                | 1000 (milliseconds)     |
+
+Option is below.
+
+| Option    | Description                        |
+| --------- | ---------------------------------- |
+| -p,--port | specify the port you want to serve |
 
 ### 1. Binary
 
@@ -42,3 +63,5 @@ docker run --init \
 -p $HOST_PORT:8080 \
 -t broly
 ```
+
+## Benchmark

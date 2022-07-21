@@ -66,6 +66,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          upload_url: ${{ github.event.release.upload_url }}
           asset_path: ${{ env.APP_NAME }}_${{ matrix.asset_name_suffix }}
           asset_name: ${{ env.APP_NAME }}_${{ matrix.asset_name_suffix }}
           asset_content_type: ${{ matrix.asset_content_type }}

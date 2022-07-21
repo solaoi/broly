@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.3"
+version       = "0.1.4"
 author        = "solaoi"
 description   = "HighPerformance Stub Server"
 license       = "MIT"

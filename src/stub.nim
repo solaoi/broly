@@ -1,16 +1,23 @@
-import httpbeast,strutils,json,options
+import httpbeast,strutils,json,options,strformat
 
 type Stub* = ref object
-  stubPath*:string
+  stubPath*: Option[string]
   stubMethod*: Option[HttpMethod]
-  stubContentType*: string
-  stubStatus*: Option[HttpCode]
+  stubContentType*: Option[string]
+  stubStatus*: HttpCode
   stubResponse*: string
-  stubSleep*: int
+  stubSleepMs*: int
+
+type
+  StubLoadError* = object of IOError
 
 proc createStub(json:JsonNode) :Stub=
   result = new Stub
-  result.stubPath = json["path"].str
+  try:
+    result.stubPath = some(json["path"].str)
+  except:
+    raise newException(StubLoadError, fmt"path is not set on this json")
+
   result.stubMethod = case json["method"].str
     of "HEAD", "head":
       some(HttpHead)
@@ -31,16 +38,33 @@ proc createStub(json:JsonNode) :Stub=
     of "PATCH", "patch":
       some(HttpPatch)
     else:
-      none(HttpMethod)
-  result.stubContentType = json["contentType"].str
+      raise newException(StubLoadError, fmt"method is not set on {$result.stubPath}")
+
+  try:
+    var contentType = json["contentType"].str
+    if contentType == "":
+      result.stubContentType = none(string)
+    else:
+      result.stubContentType = some(fmt"Content-Type: {contentType}")
+  except:
+    result.stubContentType = some("Content-Type: application/json")
+
   result.stubStatus =
     case json["statusCode"].str.parseInt()
       of 0 .. 599:
-        some(HttpCode(json["statusCode"].str.parseInt()))
+        HttpCode(json["statusCode"].str.parseInt())
       else:
-        none(HttpCode)
-  result.stubResponse = json["response"].str
-  result.stubSleep = json["sleep"].getInt
+        raise newException(StubLoadError, fmt"statusCode is not set on {$result.stubPath}")
+
+  try:
+    result.stubResponse = json["response"].str
+  except:
+    raise newException(StubLoadError, fmt"response is not set on {$result.stubPath}")
+
+  try:
+    result.stubSleepMs = json["sleep"].getInt
+  except:
+    result.stubSleepMs = 0
 
 proc getStubsOn*(path:string):seq[Stub] =
   let 
