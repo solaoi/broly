@@ -1,5 +1,7 @@
 # Broly
 
+![license](https://img.shields.io/github/license/solaoi/broly)
+
 This is a high performance stub server.
 
 ## Usage
@@ -27,9 +29,36 @@ Option is below.
 | --------- | ---------------------------------- |
 | -p,--port | specify the port you want to serve |
 
-### 1. Binary
+## Install
 
-### 2. Docker
+### 1. Mac
+
+```
+# Install
+brew install solaoi/tap/broly
+# Update
+brew upgrade broly
+```
+
+### 2. BinaryRelease
+
+```sh
+# Install with wget or curl
+## set the latest version on releases.
+VERSION=v0.1.5
+## set the OS you use. (linux or macos)
+OS=linux
+## case you use wget
+wget https://github.com/solaoi/broly/releases/download/$VERSION/broly_${OS}.tar.gz
+## case you use curl
+curl -LO https://github.com/solaoi/broly/releases/download/$VERSION/broly_${OS}.tar.gz
+## extract
+tar xvf ./broly_${OS}.tar.gz
+## move it to a location in your $PATH, such as /usr/local/bin.
+mv ./broly_${OS}/broly /usr/local/bin/
+```
+
+### 3. Docker
 
 #### RunOnly
 
