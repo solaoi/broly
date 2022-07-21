@@ -16,8 +16,12 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest
-          - macOS-latest
+          - name: ubuntu-latest
+            platform: linux
+            cpu: amd64
+          - name: macOS-latest
+            platform: darwin
+            cpu: amd64
     steps:
       - uses: actions/checkout@v1
       - uses: jiro4989/setup-nim-action@v1
@@ -26,7 +30,7 @@ jobs:
       - run: nimble build -Y -d:release --threads:on
       - name: Create artifact
         run: |
-          assets="${{ env.APP_NAME }}_$(echo "${{ runner.os }}" | tr '[:upper:]' '[:lower:]')"
+          assets="${{ env.APP_NAME }}_${{ matrix.os.platform }}_${{ matrix.os.cpu }}"
           tar czf "$assets.tar.gz" "${{ env.APP_NAME }}"
         shell: bash
       - uses: actions/upload-artifact@v2
