@@ -10,7 +10,7 @@ This is a high performance stub server.
 broly target.json -p 9999
 ```
 
-JSON format is below.   
+stub settings (JSON Format) is below.   
 see a sample [here](https://raw.githubusercontent.com/solaoi/broly/main/target.json).
 
 | Field       | Type                    | Required | Default          | Sample                  |
@@ -45,7 +45,7 @@ brew upgrade broly
 ```sh
 # Install with wget or curl
 ## set the latest version on releases.
-VERSION=v0.1.7
+VERSION=v0.1.8
 ## set the OS you use. (linux or macos)
 OS=linux
 ## case you use wget
@@ -78,6 +78,10 @@ ghcr.io/solaoi/broly:latest
 #### Local Build & Run
 
 ```sh
+# Download this repo
+git clone https://github.com/solaoi/broly.git
+cd broly
+
 # Specify the port you want to provide
 HOST_PORT=80
 
