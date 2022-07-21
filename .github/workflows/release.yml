@@ -9,7 +9,6 @@ env:
   APP_NAME: 'broly'
   NIM_VERSION: 'stable'
   MAINTAINER: 'solaoi'
-  RELEASE_FILES: broly LICENSE README.*
 
 jobs:
   build-artifact:
@@ -28,7 +27,7 @@ jobs:
       - name: Create artifact
         run: |
           assets="${{ env.APP_NAME }}_$(echo "${{ runner.os }}" | tr '[:upper:]' '[:lower:]')"
-          tar czf "$assets.tar.gz" "$assets"
+          tar czf "$assets.tar.gz" "${{ env.APP_NAME }}"
         shell: bash
       - uses: actions/upload-artifact@v2
         with:

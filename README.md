@@ -45,7 +45,7 @@ brew upgrade broly
 ```sh
 # Install with wget or curl
 ## set the latest version on releases.
-VERSION=v0.1.6
+VERSION=v0.1.7
 ## set the OS you use. (linux or macos)
 OS=linux
 ## case you use wget
@@ -55,7 +55,7 @@ curl -LO https://github.com/solaoi/broly/releases/download/$VERSION/broly_${OS}.
 ## extract
 tar xvf ./broly_${OS}.tar.gz
 ## move it to a location in your $PATH, such as /usr/local/bin.
-mv ./broly_${OS}/broly /usr/local/bin/
+mv ./broly /usr/local/bin/
 ```
 
 ### 3. Docker
