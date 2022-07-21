@@ -66,7 +66,7 @@ jobs:
 
   homebrew:
     runs-on: ubuntu-latest
-    needs: release
+    needs: upload-release
     steps:
       - name: Update Homebrew Formula
         uses: izumin5210/action-homebrew-tap@releases/v0

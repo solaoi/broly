@@ -45,7 +45,7 @@ brew upgrade broly
 ```sh
 # Install with wget or curl
 ## set the latest version on releases.
-VERSION=v0.1.5
+VERSION=v0.1.6
 ## set the OS you use. (linux or macos)
 OS=linux
 ## case you use wget
