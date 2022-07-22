@@ -71,7 +71,7 @@ STUB_JSON=filename.json
 # Run Container
 docker run --init \
 -p $HOST_PORT:8080 \
---mount type=bind,source="$(pwd)/$STUB_JSON",target=/target.json \ 
+--mount type=bind,src=`pwd`/$STUB_JSON,dst=/target.json \
 ghcr.io/solaoi/broly:latest
 ```
 
