@@ -98,3 +98,36 @@ docker run --init \
 ```
 
 ## Benchmark
+
+- Tool: [Vegeta](https://github.com/tsenart/vegeta)
+- Command:   
+```echo 'GET http://localhost:9999/hello' | vegeta attack -duration=60s | vegeta report```
+- Environment: on DockerContainer
+
+### Broly
+
+```
+Requests      [total, rate, throughput]         3000, 50.02, 50.01
+Duration      [total, attack, wait]             59.985s, 59.982s, 3.197ms
+Latencies     [min, mean, 50, 90, 95, 99, max]  958.602µs, 2.906ms, 2.989ms, 3.334ms, 3.439ms, 3.682ms, 8.954ms
+Bytes In      [total, mean]                     51000, 17.00
+Bytes Out     [total, mean]                     0, 0.00
+Success       [ratio]                           100.00%
+Status Codes  [code:count]                      200:3000  
+Error Set:
+```
+
+### [WireMock](https://wiremock.org/)
+
+demo is [here](https://github.com/solaoi/broly-wiremock-demo).
+
+```
+Requests      [total, rate, throughput]         3000, 50.02, 50.02
+Duration      [total, attack, wait]             59.98s, 59.976s, 3.466ms
+Latencies     [min, mean, 50, 90, 95, 99, max]  1.036ms, 6.185ms, 3.421ms, 4.056ms, 4.36ms, 34.511ms, 567.831ms
+Bytes In      [total, mean]                     48000, 16.00
+Bytes Out     [total, mean]                     0, 0.00
+Success       [ratio]                           100.00%
+Status Codes  [code:count]                      200:3000  
+Error Set:
+```
