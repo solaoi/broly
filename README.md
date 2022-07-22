@@ -140,7 +140,7 @@ Error Set:
 
 ## Affinity
 
-broly's JSON Format is compatible with [co-metub](https://github.com/solaoi/co-metub).
+Broly's JSON Format is compatible with [co-metub](https://github.com/solaoi/co-metub).
 
 [co-metub](https://github.com/solaoi/co-metub) is a GUI tool to manage stubs and export stubs in JSON Format.
 
