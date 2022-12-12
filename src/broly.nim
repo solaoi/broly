@@ -1,6 +1,6 @@
 import httpbeast,os,strutils,parseopt,json,asyncdispatch,options
 import stub
-
+import times
 var stubs: seq[Stub]
 
 proc getArgs():tuple[port:int, path:string] =
@@ -24,7 +24,7 @@ proc onRequest(req: Request): Future[void]{.async.} =
       if req.httpMethod == v.stubMethod and req.path == v.stubPath:
         try:
           if v.stubSleepMs > 0:
-            await sleepAsync(v.stubSleepMS)
+            poll(v.stubSleepMS)
           let status = v.stubStatus
           if v.stubContentType.isSome:
             let headers = v.stubContentType.get
