@@ -1,4 +1,4 @@
-FROM nimlang/nim:1.6.6-ubuntu AS builder
+FROM nimlang/nim:1.6.10-ubuntu AS builder
 RUN apt-get update && apt-get install -y musl-tools
 
 WORKDIR /app
