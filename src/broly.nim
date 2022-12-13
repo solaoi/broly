@@ -17,6 +17,11 @@ proc getArgs():tuple[port:int, path:string] =
     else:
       result.path = key
 
+proc fdSleep(ms: int): Future[void] =
+  var res = newFuture[void]()
+  addTimer(ms, true, proc (fd: AsyncFD): bool = res.complete(); return true)
+  return res
+
 proc onRequest(req: Request): Future[void]{.async.} = 
   var isSend:bool
   {.cast(gcsafe).}:
@@ -24,7 +29,7 @@ proc onRequest(req: Request): Future[void]{.async.} =
       if req.httpMethod == v.stubMethod and req.path == v.stubPath:
         try:
           if v.stubSleepMs > 0:
-            await sleepAsync(v.stubSleepMS)
+            await fdSleep(v.stubSleepMS)
           let status = v.stubStatus
           if v.stubContentType.isSome:
             let headers = v.stubContentType.get

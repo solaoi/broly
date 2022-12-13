@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.2.1"
+version       = "0.2.2"
 author        = "solaoi"
 description   = "HighPerformance Stub Server"
 license       = "MIT"
@@ -10,5 +10,5 @@ bin           = @["broly"]
 
 # Dependencies
 
-requires "nim >= 1.6.6"
+requires "nim >= 1.6.10"
 requires "httpbeast >= 0.4.1"
