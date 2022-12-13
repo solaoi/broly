@@ -1,6 +1,5 @@
 import httpbeast,os,strutils,parseopt,json,asyncdispatch,options
 import stub
-import times
 var stubs: seq[Stub]
 
 proc getArgs():tuple[port:int, path:string] =
