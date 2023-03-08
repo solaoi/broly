@@ -1,6 +1,8 @@
 # Broly
 
-![license](https://img.shields.io/github/license/solaoi/broly)
+[![license](https://img.shields.io/github/license/solaoi/broly)](https://github.com/solaoi/broly/blob/main/LICENSE)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/solaoi/broly)](https://github.com/solaoi/broly/releases)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/solaoi?color=db61a2)](https://github.com/sponsors/solaoi)
 
 This is a high performance stub server.
 
@@ -51,7 +53,7 @@ brew upgrade broly
 ```sh
 # Install with wget or curl
 ## set the latest version on releases.
-VERSION=v0.2.1
+VERSION=v1.0.0
 ## set the OS you use. (linux or macos)
 OS=linux
 ## case you use wget
