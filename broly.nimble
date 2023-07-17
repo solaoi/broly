@@ -2,7 +2,7 @@
 
 version       = "1.0.0"
 author        = "solaoi"
-description   = "HighPerformance Stub Server"
+description   = "High Performance Stub Server"
 license       = "MIT"
 srcDir        = "src"
 bin           = @["broly"]
