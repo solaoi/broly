@@ -105,6 +105,13 @@ docker run --init \
 -t broly
 ```
 
+### 4. Nimble
+
+```sh
+# Install & Update
+nimble install broly
+```
+
 ## Benchmark
 
 - Tool: [Vegeta](https://github.com/tsenart/vegeta)
